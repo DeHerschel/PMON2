@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\HostController;
+use App\Http\Controllers\TargetController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
-Route::get('/hosts', [HostController::class, 'index']);
-Route::get('/hosts/{host}', [HostController::class, 'show']);
+Route::get('/hosts', [TargetController::class, 'index']);
+Route::get('/hosts/{host}', [TargetController::class, 'show']);
 Route::get('/settings',[SettingController::class, 'index']);
