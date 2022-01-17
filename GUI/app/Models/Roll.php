@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Roll extends Model
 {
     public $timestamps = false;
-    protected $filleable = [
+    protected $fillable = [
         'name'
     ];
     protected $table = 'rolls';

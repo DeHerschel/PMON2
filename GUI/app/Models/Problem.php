@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Problem extends Model
 {
     public $timestamps = false;
+    protected $fillable = [
+        'type',
+        'description',
+        'target'
+    ];
     use HasFactory;
 }

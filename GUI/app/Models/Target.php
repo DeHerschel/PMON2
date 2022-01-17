@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Target extends Model
 {
     public $timestamps = false;
-    protected $filleable = [
+    protected $fillable = [
         'IP',
         'domain',
         'mac'
