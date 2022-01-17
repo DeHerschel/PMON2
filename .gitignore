@@ -1,0 +1,3 @@
+.vscode
+pmon2db.sqlite
+*.sqlite
