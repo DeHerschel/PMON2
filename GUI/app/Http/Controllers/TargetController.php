@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class TargetController extends Controller {
     public function index() {
-        $targets = Target::All();
+        $targets = Target::orderBy('id', 'desc')->paginate(4);
         return view('Targets.index', compact('targets'));
     }
-    public function show($target) {
+    public function show($id) {
+        $target = Target::find($id);
         return view('Targets.show', compact('target'));
     }
 }

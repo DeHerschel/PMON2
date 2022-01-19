@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class);
-Route::get('/hosts', [TargetController::class, 'index']);
-Route::get('/hosts/{host}', [TargetController::class, 'show']);
-Route::get('/settings',[SettingController::class, 'index']);
+Route::get('/', HomeController::class)->name('home');
+Route::get('/hosts', [TargetController::class, 'index'])->name('targets.index');
+Route::get('/hosts/{id}', [TargetController::class, 'show'])->name('targets.show');
+Route::get('/settings',[SettingController::class, 'index'])->name('settings.index');
+Route::post('/settings',[SettingController::class, 'addTarget'])->name('settings.store');

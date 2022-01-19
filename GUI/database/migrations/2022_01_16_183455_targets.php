@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 
-class Targets extends Migration
-{
+class Targets extends Migration {
     /**
      * Run the migrations.
      *
@@ -15,10 +14,10 @@ class Targets extends Migration
     public function up(){
         Schema::create('targets', function (Blueprint $table) {
             $table->id();
-            $table->string('IP', 15);
+            $table->string('IP', 15)->unique();
             $table->string('domain')->nullable();
             $table->string('MAC', 17)->nullable();
-            $table->string('name')->nullable();
+            $table->string('name')->nullable()->unique();
         });
     }
     /**
