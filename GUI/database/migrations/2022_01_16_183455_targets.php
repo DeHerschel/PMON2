@@ -14,10 +14,10 @@ class Targets extends Migration {
     public function up(){
         Schema::create('targets', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable()->unique();
             $table->string('IP', 15)->unique();
             $table->string('domain')->nullable();
-            $table->string('MAC', 17)->nullable();
-            $table->string('name')->nullable()->unique();
+            $table->string('MAC', 17)->unique()->nullable();
         });
     }
     /**

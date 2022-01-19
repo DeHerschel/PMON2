@@ -16,24 +16,30 @@
     <div class="generalConf">
         <p> <strong> General settings: </strong></p>
         <div class="addTarget">
-            <form action="{{route('settings.store')}}" method="POST">
+            <form action="{{route('targets.store')}}" method="POST">
                 @csrf
                 <p>Add a target:</p>
+                <div class="addTargetNameDiv">
+                    <label for="addTargetName">Name </label>
+                    <input type="text" id="addTargetName" name="targetName" value="{{old('targetName')}}">
+                </div>
+                @error('targetName')
+                        <small>{{$message}}</small>
+                @enderror
                 <div class="addTargetIpDiv">
                     <label for="addTargetIp">IP</label>
-                    <input type="text" id="addTargetIp" name="targetIp">
+                    <input type="text" id="addTargetIp" name="targetIp"  value="{{old('targetIp')}}">
                 </div>
+                @error('targetIp')
+                        <small>{{$message}}</small>
+                @enderror
                 <div class="addTargetDomDiv">
                     <label for="addTargetDom">Domain </label>
-                    <input type="text" id="addTargetDom" name="targetDom">
+                    <input type="text" id="addTargetDom" name="targetDom"  value="{{old('targetDom')}}">
                 </div>
                 <div class="addTargetMacDiv">
                     <label for="addTargetMac">MAC </label>
-                    <input type="text" id="addTargetMac" name="targetMac">
-                </div>
-                <div class="addTargetNameDiv">
-                    <label for="addTargetName">Name </label>
-                    <input type="text" id="addTargetName" name="targetName">
+                    <input type="text" id="addTargetMac" name="targetMac"  value="{{old('targetMac')}}">
                 </div>
                 <div class="addTargetSubmitDiv">
                     <label for="addTargetSubmit">Name </label>

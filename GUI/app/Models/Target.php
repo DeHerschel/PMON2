@@ -9,6 +9,7 @@ class Target extends Model
 {
     public $timestamps = false;
     protected $fillable = [
+        'name',
         'IP',
         'domain',
         'mac'

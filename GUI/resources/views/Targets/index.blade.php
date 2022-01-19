@@ -16,7 +16,6 @@
                     @endif
                 </ul>
             </li>
-
         @endforeach
     </ul>
     {{$targets->links()}}
