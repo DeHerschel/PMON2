@@ -13,7 +13,7 @@ class StoreTarget extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class StoreTarget extends FormRequest
     public function rules()
     {
         return [
-            //
+            'targetName' => 'required|max:10',
+            'targetIp' => 'required|ip',
+            'targetMac' => 'mac_address'
+
+        ];
+    }
+    public function attributes() {
+        return [
+            'targetIp' => 'IP',
+            'targetMac' => 'target MAC'
         ];
     }
 }

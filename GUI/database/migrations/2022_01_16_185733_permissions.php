@@ -16,8 +16,8 @@ class Permissions extends Migration {
             $table->integer('roll');
             $table->timestamps();
             $table->index('target', 'roll');
-            $table->foreign('target')->references('id')->on('targets');
-            $table->foreign('roll')->references('id')->on('rolls');
+            $table->foreign('target')->references('id')->on('targets')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('roll')->references('id')->on('rolls')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
     /**

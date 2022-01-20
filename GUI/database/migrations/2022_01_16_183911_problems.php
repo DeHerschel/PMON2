@@ -21,7 +21,7 @@ class Problems extends Migration
             $table->text('description')->nullable();
             $table->integer('target');
             $table->index('target');
-            $table->foreign('target')->references('id')->on('targets');
+            $table->foreign('target')->references('id')->on('targets')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

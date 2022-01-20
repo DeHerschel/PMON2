@@ -12,7 +12,7 @@ class Target extends Model
         'name',
         'IP',
         'domain',
-        'mac'
+        'MAC'
     ];
     use HasFactory;
 }

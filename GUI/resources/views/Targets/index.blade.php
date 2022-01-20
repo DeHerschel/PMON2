@@ -5,7 +5,7 @@
     <h1> This page displays all the hosts; </h1>
     <ul>
         @foreach ($targets as $target)
-            <li> Name: <a href="{{route('targets.show', $target->id)}}">  {{$target->name}}</a>
+            <li> Name: <a href="{{route('targets.show', $target)}}">  {{$target->name}}</a>
                 <ul>
                     <li>IP: {{$target->IP}}</li>
                     @if ($target->MAC)

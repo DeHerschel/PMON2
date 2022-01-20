@@ -24,11 +24,17 @@
             <label for="targetDom">Domain name:</label>
             <input type="text" name="targetDom" id="targetDom" value="{{old('targetDom',$target->domain)}}">
         </div>
+        @error('targetDom')
+            <small>{{$message}}</small>
+        @enderror
         <div class="targetMacDiv">
             <label for="targetMac">Mac: </label>
             <input type="text" name="targetMac" id="targetMac" value="{{old('targetMac',$target->MAC)}}">
         </div>
-         <div class="targetSubmitDiv">
+        @error('targetMac')
+            <small>{{$message}}</small>
+        @enderror
+        <div class="targetSubmitDiv">
             <input type="submit" id="targetSubmit" value="Submit">
         </div>
     </form>

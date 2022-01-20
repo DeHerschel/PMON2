@@ -37,39 +37,66 @@
                     <label for="addTargetDom">Domain </label>
                     <input type="text" id="addTargetDom" name="targetDom"  value="{{old('targetDom')}}">
                 </div>
+                 @error('targetDom')
+                        <small>{{$message}}</small>
+                @enderror
                 <div class="addTargetMacDiv">
                     <label for="addTargetMac">MAC </label>
                     <input type="text" id="addTargetMac" name="targetMac"  value="{{old('targetMac')}}">
                 </div>
+                 @error('targetMac')
+                        <small>{{$message}}</small>
+                @enderror
                 <div class="addTargetSubmitDiv">
                     <label for="addTargetSubmit">Name </label>
                     <input type="submit" id="addTargetSubmit" value="Submit">
                 </div>
             </form>
-
         </div>
         <div class="quitTargetDiv">
-
             <p>Quit target: </p>
-            <div class="quitTargetSearchDiv">
-                <label for="quitTargetSearch">Name </label>
-                <!-- This input will search in the database for targets -->
-                <input type="text" id="quitTargetSearch" name="quitTarget">
+            <div class="searchTargetFormDiv">
+            <!-- This form will be a JS in box search -->
+                <form action="{{route('settings.search')}}" method="POST">
+                    @csrf
+                    <div class="searchTargetDiv">
+                        <label for="targetSearch">Search target to quit</label>
+                        <input type="text" id="targetSearch" name="targetSearch">
+                    </div>
+                    <input type="submit">
+                </form>
             </div>
-            <div class="quitTargetInfoDiv">
-                <!-- -->
-                <br>
-                THIS IS A BOX WHO DISPLAYS
-                <br>
-                TO-QUIT TARGET INFO
-                <br>
-                <br>
-                <!-- -->
+            @if (isset($error))
+            <div class="targetSearchErrorDiv">
+                {{$error}}
+            </div>
+            @endif
+            @if (isset($target))
+            <div class="targetDeleteInfo">
+                Target to quit:
+                <div class="targetDeleteName">
+                    NAME: {{$target->name}}
+                </div>
+                <div class="targetDeleteIp">
+                    IP: {{$target->IP}}
+                </div>
+                <div class="targetDeleteDom">
+                    DOMAIN: {{$target->domain}}
+                </div>
+                <div class="targetDeleteMac">
+                    MAC: {{$target->MAC}}
+                </div>
             </div>
             <div class="quitTargetConfirmDiv">
-                <label for="quitTargetConfirm">Are you sure? </label>
-                <input type="checkbox" id="quiTargetConfirm" name="quitTargetConfirm">
+                <form action="{{route('targets.destroy', $target)}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <label for="quitTargetConfirm">Are you sure? </label>
+                    <input type="checkbox" id="quiTargetConfirm" name="quitTargetConfirm">
+                    <input type="submit">
+                </form>
             </div>
+            @endif
         </div>
 
 

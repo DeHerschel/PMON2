@@ -7,6 +7,7 @@
     <title> @yield('title') </title>
     <!-- favicon-->
     <!-- styles-->
+    <link rel="stylesheet" href="css/app.css">
 
 
 </head>
