@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 Route::get('/hosts', [TargetController::class, 'index'])->name('targets.index');
-Route::get('/hosts/{target}', [TargetController::class, 'show'])->name('targets.show');
 Route::post('/hosts/add', [TargetController::class, 'store'])->name('targets.store');
+Route::get('/hosts/{target}', [TargetController::class, 'show'])->name('targets.show');
 Route::get('/hosts/{target}/edit', [TargetController::class, 'edit'])->name('targets.edit');
 Route::put('/hosts/{target}', [TargetController::class, 'update'])->name('targets.update');
 Route::delete('/hosts/{target}', [TargetController::class, 'destroy'])->name('targets.destroy');

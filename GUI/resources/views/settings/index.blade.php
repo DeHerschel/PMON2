@@ -30,6 +30,7 @@
                     <label for="addTargetIp">IP</label>
                     <input type="text" id="addTargetIp" name="targetIp"  value="{{old('targetIp')}}">
                 </div>
+
                 @error('targetIp')
                         <small>{{$message}}</small>
                 @enderror
@@ -37,18 +38,19 @@
                     <label for="addTargetDom">Domain </label>
                     <input type="text" id="addTargetDom" name="targetDom"  value="{{old('targetDom')}}">
                 </div>
-                 @error('targetDom')
+                @error('targetDom')
                         <small>{{$message}}</small>
                 @enderror
                 <div class="addTargetMacDiv">
                     <label for="addTargetMac">MAC </label>
                     <input type="text" id="addTargetMac" name="targetMac"  value="{{old('targetMac')}}">
                 </div>
+
                  @error('targetMac')
                         <small>{{$message}}</small>
                 @enderror
                 <div class="addTargetSubmitDiv">
-                    <label for="addTargetSubmit">Name </label>
+                    <label for="addTargetSubmit"></label>
                     <input type="submit" id="addTargetSubmit" value="Submit">
                 </div>
             </form>

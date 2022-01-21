@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTarget extends FormRequest
+class UpdateTarget extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,14 @@ class StoreTarget extends FormRequest
     public function rules()
     {
         return [
-            'targetName' => 'required|max:10|unique:targets,name',
-            'targetIp' => 'required|ip|unique:targets,IP',
+            'targetName' => 'required|max:10|unique:targets,name,'.$this->target->id,
+            'targetIp' => 'required|ip|unique:targets,IP,'.$this->target->id,
             'targetDom' => 'nullable|max:255',
-            'targetMac' => 'nullable|mac_address|unique:targets,MAC'
+            'targetMac' => 'nullable|mac_address|unique:targets,MAC,'.$this->target->id
         ];
     }
-    public function attributes() {
+    public function attributes()
+    {
         return [
             'targetIp' => 'IP',
             'targetMac' => 'target MAC'

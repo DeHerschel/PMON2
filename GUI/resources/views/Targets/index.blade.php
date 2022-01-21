@@ -3,21 +3,24 @@
 
 @section('content')
     <h1> This page displays all the hosts; </h1>
-    <ul>
         @foreach ($targets as $target)
-            <li> Name: <a href="{{route('targets.show', $target)}}">  {{$target->name}}</a>
-                <ul>
-                    <li>IP: {{$target->IP}}</li>
-                    @if ($target->MAC)
-                    <li> MAC: {{$target->MAC}}</li>
-                    @endif
-                    @if ($target->domain)
-                    <li>DOMAIN: {{$target->domain}}</li>
-                    @endif
-                </ul>
-            </li>
+            <div class="targetContainer">
+            <a href="{{route('targets.show', $target)}}">  {{$target->name}}</a>
+            <div class="targetIp">
+                IP: {{$target->IP}}
+            </div>
+            @if ($target->MAC)
+            <div class="targetMac">
+                MAC: {{$target->MAC}}
+            </div>
+            @endif
+            @if ($target->domain)
+            <div class="domain">
+                DOMAIN: {{$target->domain}}
+            </div>
+            @endif
         @endforeach
-    </ul>
+        </div>
     {{$targets->links()}}
 
 @endsection

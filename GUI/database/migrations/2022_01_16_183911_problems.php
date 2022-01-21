@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class Problems extends Migration
-{
+class Problems extends Migration {
     /**
      * Run the migrations.
      *
@@ -24,7 +23,6 @@ class Problems extends Migration
             $table->foreign('target')->references('id')->on('targets')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
-
     /**
      * Reverse the migrations.
      *
