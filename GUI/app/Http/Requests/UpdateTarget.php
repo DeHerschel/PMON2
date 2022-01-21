@@ -24,7 +24,7 @@ class UpdateTarget extends FormRequest
     public function rules()
     {
         return [
-            'targetName' => 'required|max:10|unique:targets,name,'.$this->target->id,
+            'targetName' => 'required|max:10|alpha_dash|unique:targets,name,'.$this->target->id,
             'targetIp' => 'required|ip|unique:targets,IP,'.$this->target->id,
             'targetDom' => 'nullable|max:255',
             'targetMac' => 'nullable|mac_address|unique:targets,MAC,'.$this->target->id

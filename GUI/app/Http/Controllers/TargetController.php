@@ -27,7 +27,7 @@ class TargetController extends Controller {
         $target->MAC = $request->targetMac;
         $target->name = $request->targetName;
         $target->save();
-        return redirect()->route('targets.show', $target->id);
+        return redirect()->route('targets.show', $target);
     }
 
     public function edit(Target $target) {
@@ -35,13 +35,12 @@ class TargetController extends Controller {
     }
 
     public function update(RequestUpdateTarget $request,Target $target) {
-
         $target->IP = $request->targetIp;
         $target->domain = $request->targetDom;
         $target->MAC = $request->targetMac;
         $target->name = $request->targetName;
         $target->save();
-        return view('Targets.show', compact('target'));
+        return redirect()->route('targets.show', $target);
     }
     public function destroy(Target $target){
         $target->delete();

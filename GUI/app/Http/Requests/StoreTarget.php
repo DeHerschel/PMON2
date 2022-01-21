@@ -24,7 +24,7 @@ class StoreTarget extends FormRequest
     public function rules()
     {
         return [
-            'targetName' => 'required|max:10|unique:targets,name',
+            'targetName' => 'required|max:10|unique:targets,name|alpha_dash',
             'targetIp' => 'required|ip|unique:targets,IP',
             'targetDom' => 'nullable|max:255',
             'targetMac' => 'nullable|mac_address|unique:targets,MAC'

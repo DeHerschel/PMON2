@@ -15,4 +15,8 @@ class Target extends Model
         'MAC'
     ];
     use HasFactory;
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }
