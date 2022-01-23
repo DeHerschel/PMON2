@@ -10,6 +10,7 @@ class SettingController extends Controller {
     public function index() {
         return view('settings.index');
     }
+
     public function search(Request $request) {
         $target = TargetController::search($request);
         if ($target) {

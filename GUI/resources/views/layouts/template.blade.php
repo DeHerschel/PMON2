@@ -9,13 +9,17 @@
     <!-- styles-->
     <link rel="stylesheet" href="css/app.css">
 
-
+    <style>
+        .active{
+            color:black;
+        }
+    </style>
 </head>
 <body>
-    <!-- header -->
+    @include('layouts.partials.header')
     <!-- nav -->
     @yield('content')
-    <!-- footer -->
+    @include('layouts.partials.footer')
     <!-- scripts -->
 </body>
 </html>

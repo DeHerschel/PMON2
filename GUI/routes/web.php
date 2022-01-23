@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TargetController;
 use App\Http\Controllers\SettingController;
+use App\Mail\IssueMailable;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +26,8 @@ Route::get('/', HomeController::class)->name('home');
 // Route::get('/hosts/{target}/edit', [TargetController::class, 'edit'])->name('targets.edit');
 // Route::put('/hosts/{target}', [TargetController::class, 'update'])->name('targets.update');
 // Route::delete('/hosts/{target}', [TargetController::class, 'destroy'])->name('targets.destroy');
-Route::resource('hosts', TargetController::class)->parameters(['hosts'=>'target'])->names('targets');
+Route::resource('targets', TargetController::class)->parameters(['hosts'=>'target'])->names('targets');
 
 Route::get('/settings',[SettingController::class, 'index'])->name('settings.index');
 Route::post('/settings', [SettingController::class, 'search'])->name('settings.search');
+
