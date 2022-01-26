@@ -31,3 +31,7 @@ Route::resource('targets', TargetController::class)->parameters(['hosts'=>'targe
 Route::get('/settings',[SettingController::class, 'index'])->name('settings.index');
 Route::post('/settings', [SettingController::class, 'search'])->name('settings.search');
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -18,14 +18,16 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('first_name');
             $table->string('last_name');
+            $table->bigInteger('roll_id');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->bigInteger('roll');
-            $table->index('roll');
-            $table->foreign('roll')->references('id')->on('Rolls');
+            $table->index('roll_id');
+            $table->foreign('roll_id')->references('id')->on('Rolls');
         });
     }
 
@@ -38,4 +40,4 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
-}
+};
