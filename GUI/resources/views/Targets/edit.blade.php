@@ -1,8 +1,10 @@
-@extends('layouts.template')
-@section('title', 'PMON2 | EDIT'.$target->name )
+<x-AppLayout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Edit Target: {{$target->name}}
+        </h2>
+    </x-slot>
 
-@section('content')
-    <h1>EDIT TARGET:</h1>
     <form action="{{route('targets.update', $target)}}" method="POST">
         @csrf
         @method('put')
@@ -38,5 +40,6 @@
             <input type="submit" id="targetSubmit" value="Submit">
         </div>
     </form>
+</x-AppLayout>
 
-@endsection
+

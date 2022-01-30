@@ -1,19 +1,21 @@
-@extends('layouts.template')
-@section('title', '| PMON2'.$target->name)
+<x-AppLayout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Target: {{$target->name}}
+        </h2>
+    </x-slot>
+    <a href="{{route('targets.index')}}">Back to all hosts</a>
+    <a href="{{route('targets.edit', $target)}}">Edit Target</a>
+    <ul>
+        <li>{{$target->name}}</li>
+        <li>{{$target->IP}}</li>
+        @if ($target->domain)
+        <li>{{$target->domain}}</li>
+        @endif
+        @if ($target->MAC)
+        <li>{{$target->MAC}}</li>
+        @endif
+    </ul>
+</x-AppLayout>
 
-@section('content')
-<h1> This page show individual host information: {{$target->name}} </h1>
-<a href="{{route('targets.index')}}">Back to all hosts</a>
-<a href="{{route('targets.edit', $target)}}">Edit Target</a>
-<ul>
-    <li>{{$target->name}}</li>
-    <li>{{$target->IP}}</li>
-    @if ($target->domain)
-    <li>{{$target->domain}}</li>
-    @endif
-    @if ($target->MAC)
-    <li>{{$target->MAC}}</li>
-    @endif
-</ul>
-@endsection
 

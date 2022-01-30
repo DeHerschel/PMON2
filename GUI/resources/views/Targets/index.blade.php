@@ -1,8 +1,9 @@
-@extends('layouts.template')
-@section('title', 'PMON2 | HOSTS' )
-
-@section('content')
-    <h1> This page displays all the hosts; </h1>
+<x-AppLayout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Targets
+        </h2>
+    </x-slot>
         @foreach ($targets as $target)
             <div class="targetContainer">
             <a href="{{route('targets.show', $target)}}">  {{$target->name}}</a>
@@ -22,6 +23,6 @@
         @endforeach
         </div>
     {{$targets->links()}}
+</x-AppLayout>
 
-@endsection
 

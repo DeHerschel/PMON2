@@ -26,12 +26,9 @@ Route::get('/', HomeController::class)->name('home');
 // Route::get('/hosts/{target}/edit', [TargetController::class, 'edit'])->name('targets.edit');
 // Route::put('/hosts/{target}', [TargetController::class, 'update'])->name('targets.update');
 // Route::delete('/hosts/{target}', [TargetController::class, 'destroy'])->name('targets.destroy');
-Route::resource('targets', TargetController::class)->parameters(['hosts'=>'target'])->names('targets');
-
-Route::get('/settings',[SettingController::class, 'index'])->name('settings.index');
-Route::post('/settings', [SettingController::class, 'search'])->name('settings.search');
-
-
+Route::resource('targets', TargetController::class)->parameters(['hosts'=>'target'])->names('targets')->middleware('auth');
+Route::get('/settings',[SettingController::class, 'index'])->name('settings.index')->middleware('auth');
+Route::post('/settings', [SettingController::class, 'search'])->name('settings.search')->middleware('auth');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

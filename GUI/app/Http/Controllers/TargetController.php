@@ -11,7 +11,9 @@ use Illuminate\Support\Str;
 
 class TargetController extends Controller {
 
+
     public function index() {
+
         $targets = Target::orderBy('id', 'desc')->paginate(4);
         return view('Targets.index', compact('targets'));
     }

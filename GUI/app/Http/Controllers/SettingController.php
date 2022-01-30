@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\TargetController;
 use App\Http\Requests\StoreTarget as RequestStoreTarget;
 class SettingController extends Controller {
+
+
     public function index() {
+
         return view('settings.index');
     }
 
     public function search(Request $request) {
+
         $target = TargetController::search($request);
         if ($target) {
             return view('settings.index', compact('target'));

@@ -2,19 +2,22 @@
 
 namespace App\View\Components;
 
+use App\Models\Target;
 use Illuminate\View\Component;
 
-class Alert extends Component
+class DeleteTarget extends Component
 {
-    public $color;
+    public $target;
+    public $error;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($color = "blue")
+    public function __construct(Target $target = null, $error = null)
     {
-        $this->color = $color;
+        $this->target = $target;
+        $this->error = $error;
     }
 
     /**
@@ -24,6 +27,6 @@ class Alert extends Component
      */
     public function render()
     {
-        return view('components.alert');
+        return view('components.delete-target');
     }
 }
