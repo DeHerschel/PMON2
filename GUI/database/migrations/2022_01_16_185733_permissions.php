@@ -10,14 +10,14 @@ class Permissions extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('roll_target', function (Blueprint $table) {
             $table->id();
-            $table->integer('target');
-            $table->integer('roll');
+            $table->integer('target_id');
+            $table->integer('roll_id');
             $table->timestamps();
-            $table->index('target', 'roll');
-            $table->foreign('target')->references('id')->on('targets')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign('roll')->references('id')->on('rolls')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->index('target_id', 'roll_id');
+            $table->foreign('target_id')->references('id')->on('targets')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('roll_id')->references('id')->on('rolls')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
     /**

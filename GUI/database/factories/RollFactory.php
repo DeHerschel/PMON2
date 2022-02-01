@@ -12,7 +12,7 @@ class RollFactory extends Factory {
      */
     public function definition() {
         return [
-            'name' => $this->faker->unique()->randomElement(['programmer', 'sysadmin', 'sysgod'])
+            'name' => $this->faker->unique()->randomElement(['sysgod', 'programmer', 'sysadmin'])
         ];
     }
 }

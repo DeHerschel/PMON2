@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Target;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreTarget as RequestStoreTarget;
-use App\Http\Requests\UpdateTarget as RequestUpdateTarget;
-
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreTarget as RequestStoreTarget;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Http\Requests\UpdateTarget as RequestUpdateTarget;
 
 class TargetController extends Controller {
 
-
     public function index() {
-
-        $targets = Target::orderBy('id', 'desc')->paginate(4);
+        $targets = Auth::user()->Roll->Targets()->orderBy('id', 'desc')->paginate(4);
+        if (Auth::user()->Roll->id == 1){
+            $targets = Target::orderBy('id', 'desc')->paginate(4);
+        }
         return view('Targets.index', compact('targets'));
     }
-
     public function show(Target $target) {
         return view('Targets.show', compact('target'));
     }
@@ -68,5 +69,8 @@ class TargetController extends Controller {
         return false;
     }
 
+    public function Rolls() {
+        return $this->HaveMany('App\Models\Roll');
+    }
 }
 

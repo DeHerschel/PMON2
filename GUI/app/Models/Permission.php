@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
+    public $table = 'roll_target';
     use HasFactory;
+
 }

@@ -19,4 +19,8 @@ class Target extends Model
     {
         return 'name';
     }
+    public function Rolls()
+    {
+        return $this->belongsToMany('App\Models\Roll');
+    }
 }

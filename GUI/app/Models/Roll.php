@@ -13,4 +13,11 @@ class Roll extends Model
     ];
     protected $table = 'rolls';
     use HasFactory;
+
+    public function Users() {
+        return $this->hasMany('App\Models\User');
+    }
+    public function Targets() {
+        return $this->belongsToMany('App\Models\Target');
+    }
 }
