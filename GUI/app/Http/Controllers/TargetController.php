@@ -23,16 +23,6 @@ class TargetController extends Controller {
         return view('Targets.show', compact('target'));
     }
 
-    public function store(RequestStoreTarget $request) {
-        $target = new Target();
-        $target->IP = $request->targetIp;
-        $target->domain = $request->targetDom;
-        $target->MAC = $request->targetMac;
-        $target->name = $request->targetName;
-        $target->save();
-        return redirect()->route('targets.show', $target);
-    }
-
     public function edit(Target $target) {
         return view('Targets.edit', compact('target'));
     }
@@ -49,28 +39,9 @@ class TargetController extends Controller {
         $target->delete();
         return redirect()->route('settings.index');
     }
-    public static function search(Request $request) {
-        $target = Target::where('name', '=', $request->targetSearch)->get();
-        if ($target->count()) {
-            return $target[0];
-        }
-        $target = Target::where('IP', '=', $request->targetSearch)->get();
-        if ($target->count()) {
-            return $target[0];
-        }
-        $target = Target::where('domain', '=', $request->targetSearch)->get();
-        if ($target->count()) {
-            return $target[0];
-        }
-        $target = Target::where('MAC', '=', $request->targetSearch)->get();
-        if ($target->count()) {
-            return $target[0];
-        }
-        return false;
-    }
 
-    public function Rolls() {
-        return $this->HaveMany('App\Models\Roll');
+    public static function store(Target $target) {
+        $target->save();
     }
 }
 

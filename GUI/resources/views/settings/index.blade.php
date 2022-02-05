@@ -4,7 +4,7 @@
             Settings
         </h2>
     </x-slot>
-    <div>
+    <div class="max-w-7xl mx-auto">
 
 
                     {{-- <div class="userConf" >
