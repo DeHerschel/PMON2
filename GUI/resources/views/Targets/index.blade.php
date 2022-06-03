@@ -4,25 +4,16 @@
             Targets
         </h2>
     </x-slot>
+    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl py-10 sm:px-6 lg:px-8 mx-auto">
+        <div class="md:grid md:grid-cols-3 md:gap-6">
         @foreach ($targets as $target)
-            <div class="targetContainer">
-            <a href="{{route('targets.show', $target)}}">  {{$target->name}}</a>
-            <div class="targetIp">
-                IP: {{$target->IP}}
-            </div>
-            @if ($target->MAC)
-            <div class="targetMac">
-                MAC: {{$target->MAC}}
-            </div>
-            @endif
-            @if ($target->domain)
-            <div class="domain">
-                DOMAIN: {{$target->domain}}
-            </div>
-            @endif
+                <x-index-host-card :target="$target" />
         @endforeach
         </div>
+    </div>
     {{$targets->links()}}
+    </div>
 </x-AppLayout>
 
 

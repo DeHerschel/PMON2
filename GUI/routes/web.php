@@ -6,7 +6,7 @@ use App\Http\Controllers\SettingController;
 use App\Mail\IssueMailable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +29,7 @@ Route::get('/', HomeController::class)->name('home');
 Route::resource('targets', TargetController::class)->parameters(['hosts'=>'target'])->names('targets')->middleware('auth');
 Route::get('/settings',[SettingController::class, 'index'])->name('settings.index')->middleware('auth');
 Route::post('/settings', [SettingController::class, 'search'])->name('settings.search')->middleware('auth');
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/register', [RegisteredUserController::class, 'create'])
+->name('register')->middleware('auth');            
+Route::post('/register', [RegisteredUserController::class, 'store'])
+->middleware('auth');

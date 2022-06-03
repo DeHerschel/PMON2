@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Roll extends Model
+class Role extends Model
 {
     public $timestamps = false;
     protected $fillable = [
         'name'
     ];
-    protected $table = 'rolls';
+    protected $table = 'roles';
     use HasFactory;
 
     public function Users() {

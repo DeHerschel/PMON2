@@ -28,7 +28,7 @@ class User extends Authenticatable
         'username',
         'first_name',
         'last_name',
-        'roll_id',
+        'role_id',
         'email',
         'password',
     ];
@@ -63,7 +63,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function Roll(){
-        return $this->belongsTo('App\Models\Roll');
+    public function Role(){
+        return $this->belongsTo('App\Models\Role');
     }
 }

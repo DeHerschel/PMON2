@@ -24,8 +24,8 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="roll" value="{{ __('Roll') }}" />
-                <x-jet-input id="roll" class="block mt-1 w-full" type="text" name="roll" :value="old('roll')" required autofocus autocomplete="roll" />
+                <x-jet-label for="role" value="{{ __('Role') }}" />
+                <x-jet-input id="role" class="block mt-1 w-full" type="text" name="role" :value="old('role')" required autofocus autocomplete="role" />
             </div>
 
             <div class="mt-4">

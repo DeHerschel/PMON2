@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('first_name');
             $table->string('last_name');
-            $table->bigInteger('roll_id');
+            $table->bigInteger('role_id');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->index('roll_id');
-            $table->foreign('roll_id')->references('id')->on('Rolls');
+            $table->index('role_id');
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

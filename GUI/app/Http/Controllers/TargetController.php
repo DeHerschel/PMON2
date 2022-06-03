@@ -13,12 +13,13 @@ use App\Http\Requests\UpdateTarget as RequestUpdateTarget;
 class TargetController extends Controller {
 
     public function index() {
-        $targets = Auth::user()->Roll->Targets()->orderBy('id', 'desc')->paginate(4);
-        if (Auth::user()->Roll->id == 1){
-            $targets = Target::orderBy('id', 'desc')->paginate(4);
+        $targets = Auth::user()->Role->Targets()->orderBy('id', 'desc')->paginate(9);
+        if (Auth::user()->Role->id == 1){
+            $targets = Target::orderBy('id', 'desc')->paginate(9);
         }
         return view('Targets.index', compact('targets'));
     }
+    
     public function show(Target $target) {
         return view('Targets.show', compact('target'));
     }
@@ -35,6 +36,7 @@ class TargetController extends Controller {
         $target->save();
         return redirect()->route('targets.show', $target);
     }
+    
     public function destroy(Target $target){
         $target->delete();
         return redirect()->route('settings.index');

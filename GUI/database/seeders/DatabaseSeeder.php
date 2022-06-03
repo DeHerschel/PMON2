@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Problem;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Roll;
+use App\Models\Role;
 use App\Models\Target;
 use App\Models\Permission;
 
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         Target::factory(10)->create();
         Problem::factory(3)->create();
-        Roll::factory(3)->create();
+        Role::factory(3)->create();
         User::factory(5)->create();
         Permission::factory(10)->create();
     }
