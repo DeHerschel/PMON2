@@ -103,6 +103,7 @@ cp service/pmond /var/lib/pmon2/pmond
 cp pmon.sh /var/lib/pmon2/pmon.sh
 cp -r GUI /var/lib/pmon2/GUI
 cd /var/lib/pmon2/GUI
+cp .env.example .env
 composer update
 composer install
 npm install
