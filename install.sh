@@ -9,33 +9,33 @@ sleep 1
 [[ `which php` ]] || {
 	echo -ne "Installing php...\r"
 	sleep 1;
-	apt install php libapache2-mod-pho
+	apt install -y php libapache2-mod-pho
 }
 [[ `which node` ]] || {
 	echo -ne "Installing nodejs...\r"
 	curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 	sleep 1;
-	apt install nodejs npm build-essential
+	apt install -y nodejs npm build-essential
 }
 [[ `which composer` ]] || {
 	echo -ne "Installing composer...\r"
 	sleep 1;
-	apt install composer
+	apt install -y composer
 }
 [[ `which sqlite3` ]] || {
 	echo -ne "Installing sqlite3...\r"
 	sleep 1;
-	apt install sqlite3 php-sqlite3
+	apt install -y sqlite3 php-sqlite3
 }
 [[ `which arp-scan` ]] || {
 	echo -ne "Installing arp-scan...\r";
 	sleep 1;
-	apt install arp-scan
+	apt install -y arp-scan
 }
 [[ `which ifconfig` ]] || {
 	echo -ne "Installing net-tools...\r";
 	sleep 1;
-	apt install net-tools
+	apt install -y net-tools
 }
 echo 'ok'
 sleep 1
@@ -115,7 +115,7 @@ sqlite3 /etc/pmon2/pmon2db.sqlite "INSERT INTO 'role_target' ('target_id', 'role
 
 sleep 1
 echo -ne "ok                              \n"
-echo -ne "Making symlinks....\n"
+echo -ne "Making symlinks....\n"-y 
 
 ln /var/lib/pmon2/pmond /bin/pmond
 ln /var/lib/pmon2/pmon.sh /usr/bin/pmon
