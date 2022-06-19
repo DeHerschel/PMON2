@@ -30,7 +30,7 @@ function getStats() {
 	fi
 	[[ $(($PICMP-1)) -eq $LAST_PICMP ]] || {
 		let problems=$problems+1;
-		sqlite3 $DB "INSERT INTO problems ('type', 'description', 'target') values ('DOWN', 'HOST IS DOWN', (SELECT id FROM targets WHERE IP = '$HOST'))"
+		sqlite3 $DB "INSERT INTO problems ('type', 'description', 'target_id') values ('DOWN', 'HOST IS DOWN', (SELECT id FROM targets WHERE IP = '$HOST'))"
 		let lost=$lost+1;
 		LOST=$lost
 		PROBLEMS=$problems;
