@@ -23,11 +23,14 @@
                 <x-jet-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="role" value="{{ __('Role') }}" />
-                <x-jet-input id="role" class="block mt-1 w-full" type="text" name="role" :value="old('role')" required autofocus autocomplete="role" />
-            </div>
-
+            <div class="addTargetDomDiv col-span-6" >
+                    <label for="role" class="block font-medium text-sm text-gray-700">Rol: </label>
+                    <select id="role" name="role" class="border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full ">
+                        <option wire:model="role" value="1">Superadmin</option>
+                        <option wire:model="role" value="2">Sysadmin</option>
+                        <option wire:model="role" value="3">Programmer</option>
+                    </select>
+                </div>
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />

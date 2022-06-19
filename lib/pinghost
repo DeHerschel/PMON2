@@ -1,19 +1,20 @@
 #!/bin/bash
-source /var/lib/pmon/makejson
+source /var/lib/pmon2/makejson
 unset HOST;
 unset PTIME;
 unset PICMP;
 unset PTTL;
 ERRORMODE=0;
-LAST_PICMP=0;
+LAST_PICMP=0
+problems=0;
+
 function getStats() {
 	local pingLine=$1;
 	local pingLine=($pingLine)
-	local problems=0;
 	local lost=0;
+	PROBLEMS=0;
 	STATE='NORMAL';
 	LOST=0;
-	PROBLEMS=0;
 	PTIME=${pingLine[-2]:5};
 	PTTL=${pingLine[-3]:4};
 	PICMP=${pingLine[-4]:9};
@@ -22,18 +23,33 @@ function getStats() {
 	# a priori don't know how much decimals
 	# there will be (if 1 or 2)
 	IFS='.' read -ra PTIMESPLIT <<< $PTIME;
-	if [[ ${PTIMESPLIT[0]} -lt 30 ]]; then 
+	if [[ ${PTIMESPLIT[0]} -lt 22 ]]; then 
 		STATE='GOOD';
-	elif [[ ${PTIMESPLIT[0]} -gt 100 ]]; then
+	elif [[ ${PTIMESPLIT[0]} -gt 60 ]]; then
 		STATE='BAD';
 	fi
 	[[ $(($PICMP-1)) -eq $LAST_PICMP ]] || {
 		let problems=$problems+1;
+		sqlite3 $DB "INSERT INTO problems ('type', 'description', 'target') values ('DOWN', 'HOST IS DOWN', (SELECT id FROM targets WHERE IP = '$HOST'))"
 		let lost=$lost+1;
 		LOST=$lost
 		PROBLEMS=$problems;
+
 	}
 }
+function mail() {
+	if [[ $mail_when_down == "on" ]]; then
+		sqlite3 $DB "SELECT email FROM Users WHERE role_id = (SELECT role_id FROM role_target WHERE target_id = (SELECT id FROM Targets WHERE IP = '$HOST'))" | while read -r mail; do
+			echo "The host $HOST is down" | mail -s "HOST DOWN" $mail
+		done
+		sqlite3 $DB "SELECT email FROM Users WHERE role_id = '1'" | while read -r mail; do
+			echo "The host $HOST is down" | mail -s "HOST DOWN" $mail
+		done
+	fi
+}
+
+
+
 
 function pingHost() { #ARGS: HOST [nhost as a service]
 	local isfirstline=1;
@@ -46,44 +62,45 @@ function pingHost() { #ARGS: HOST [nhost as a service]
 			#no answer ---> eroor mode ---> alert & log
 			aae=0;
 			[ "$ERRORMODE" -eq 1 ] && {	
-				echo -e " \e[101;1;97m WARNING: ${line}\e[m\n";
-				downJSON;
+				downJSON $HOST;
 				continue;
 			}
-			downJSON;
+			downJSON $HOST;
 			hostdownMsg;
+			mail
 			ERRORMODE=1;
 		else #good answer
-			getStats "$line"
+				
 			[ $isfirstline -eq 1 ] && {
-				pingMsg
 				isfirstline=0;
 				continue;
 			}
+		
+			getStats "$line"
 			#error mode = 1
 			if [ $ERRORMODE -eq 1 ]; then
 				let aae=aae+1; #count aae
 				[ "$aae" -eq 1 ] && { #first good pingLine after error
-					inestableJSON;
+					inestableJSON $HOST;
 					hostUpMsg;
 					continue;
 				}
 				[ "$aae" -eq 30 ] && { #30 good pingLine after error ends error mode
-					dataJSON
+					dataJSON $HOST;
 					hoststableMsg
 					aae=0; #reset AAE
 					ERRORMODE=0;
 					continue;
 				}
-				inestableJSON;
+				inestableJSON $HOST;
 				waitingstableMsg;
 				continue;
 			fi
-			dataJSON
+			dataJSON $HOST;
 			pingMsg
 			LAST_PICMP=$PICMP;
 		fi
-	done &
+	done  &
 	pingpids=(${pingpids[@]} $!);
 	echo $! >> /var/run/pmond.pids
 	HOSTDATA[PINGPID]=$!

@@ -6,6 +6,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller {
     public function __invoke()  {
-        return redirect()->route('targets.index');
+        return redirect()->route('dashboard');
     }
 }

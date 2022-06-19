@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source /var/lib/pmon/general
+source /var/lib/pmon2/general
 unset targetopt;
 unset IFC;
 unset VERBOSE;

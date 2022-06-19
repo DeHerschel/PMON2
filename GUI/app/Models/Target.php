@@ -13,7 +13,7 @@ class Target extends Model
         'IP',
         'domain',
         'MAC',
-        'pingData'
+
     ];
     use HasFactory;
     public function getRouteKeyName()
@@ -23,5 +23,9 @@ class Target extends Model
     public function Roles()
     {
         return $this->belongsToMany('App\Models\Role');
+    }
+    public function Problems()
+    {
+        return $this->hasMany('App\Models\Problem');
     }
 }

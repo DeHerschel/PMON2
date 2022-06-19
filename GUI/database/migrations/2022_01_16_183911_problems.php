@@ -18,9 +18,9 @@ class Problems extends Migration {
             $table->string('type');
             $table->timestamp('date')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->text('description')->nullable();
-            $table->integer('target');
-            $table->index('target');
-            $table->foreign('target')->references('id')->on('targets')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('target_id');
+            $table->index('target_id');
+            $table->foreign('target_id')->references('id')->on('targets')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
     /**

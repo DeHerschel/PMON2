@@ -17,6 +17,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -42,5 +43,19 @@
         @stack('modals')
 
         @livewireScripts
+        <script>
+        Livewire.on('added', ()=> {
+            Swal.fire({
+  title: 'Target added successfully!',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  }
+})
+        })
+
+    </script>
     </body>
 </html>

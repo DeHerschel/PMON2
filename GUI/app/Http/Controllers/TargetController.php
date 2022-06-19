@@ -19,7 +19,7 @@ class TargetController extends Controller {
         }
         return view('Targets.index', compact('targets'));
     }
-    
+
     public function show(Target $target) {
         return view('Targets.show', compact('target'));
     }
@@ -36,10 +36,11 @@ class TargetController extends Controller {
         $target->save();
         return redirect()->route('targets.show', $target);
     }
-    
-    public function destroy(Target $target){
-        $target->delete();
-        return redirect()->route('settings.index');
+
+    public static function destroy(Target $target){
+        $target->forceDelete();
+        system("service pmon restart");
+        return $target;
     }
 
     public static function store(Target $target) {

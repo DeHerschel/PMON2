@@ -18,7 +18,9 @@ class Targets extends Migration {
             $table->string('IP', 15)->unique();
             $table->string('domain')->nullable();
             $table->string('MAC', 17)->unique()->nullable();
-            $table->string('pingData')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+
         });
     }
     /**

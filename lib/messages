@@ -25,12 +25,12 @@ helpMsg() {
 Options:
 	-I			Interface to use
 	-v --verbosity		Verbosity level [0-5] (3 DEFAULT)
-						0) No log - no stdout
-						1) Log down, up and stable - no stdout
-						2) No log - stdout down, up, stable
-						3) Log down, up and stable - stdout down, up, stable, stats 
-						4) Log down, up and stable - stdout down, up, stable, stats, line 
-						5) Log all - stdout all THIS WILL DIRTY YOUR LOG
+				0) No log - no stdout
+				1) Log down, up and stable - no stdout
+				2) No log - stdout down, up, stable
+				3) Log down, up and stable - stdout down, up, stable, stats 
+				4) Log down, up and stable - stdout down, up, stable, stats, line 
+				5) Log all - stdout all THIS WILL DIRTY YOUR LOG
 	-t [IP] [HOST]		Target host 
 	-h --help		Show this message
 	";
@@ -96,7 +96,7 @@ waitingstableMsg() {
 			echo -e "${line}"; echo "$(date): $line" >> $LOG;; 
 	esac
 }
-hostdownMsg() {
+errorModeMsg() {
 	case $VERBOSE in
 		0)
 			;;
@@ -158,4 +158,23 @@ hoststableMsg() {
 statsMsg() {
 	echo "TTL=$PTTL		ICMP=$PICMP		TIME=$PTIME
 STATE: $STATE 	LOST=$LOST		PROBLEMS: $PROBLEMS"
+}
+
+hostdownMsg() {
+	case $VERBOSE in
+		[012])
+			;;
+		3)
+			echo -e "${HOST}: ";
+			echo -e " \e[101;1;97m WARNING: ${line}\e[m\n";;
+		4)
+			echo -e "${HOST}: ";
+			echo -e " \e[101;1;97m WARNING: ${line}\e[m\n";
+			echo -e "$(date): $HOST ${line}" >> $LOG;;
+		5) 	
+			echo -e "${HOST}: ";
+			echo -e " \e[101;1;97m WARNING: ${line}\e[m\n";
+			echo -e "$(date): $HOST ${line}" >> $LOG;;
+	esac
+
 }

@@ -1,12 +1,7 @@
 <div>
-    <button wire:click="$set('modal', 'true')" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-400 active:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">
-            Add Target
+    <button wire:click="$set('modal', 'true')" class=" mt-1 inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-blue-400 active:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">
+            Add
     </button>
-    @if ($added)
-        <x-alert class="mt-5">
-            Target added succesfully
-        </x-alert>
-    @endif
     <x-jet-dialog-modal wire:model="modal">
         <x-slot name="title">
             Add Target
@@ -40,11 +35,25 @@
                     @error('mac')
                         <p class="text-sm text-red-600 mt-2">{{$message}}</p>
                     @enderror
-                    </div>
+                </div>
+                @if ($selowner)
+
+                <div class="addTargetDomDiv col-span-6" >
+                    <label for="addTargetRol" class="block font-medium text-sm text-gray-700">Rol: </label>
+                    <select id="addTargetRol" name="addTargetRol" wire:model="rol" class="border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full ">
+                        <option value="">Select role</option>
+                        <option value="1">Superadmin</option>
+                        <option value="2">Sysadmin</option>
+                        <option value="3">Programmer</option>
+                        <option value="0">All</option>
+                    </select>
+                </div>
+                @endif
             </div>
         </x-slot>
         <x-slot name="footer">
-                <button wire:click="submit" type="submit" id="addTargetSubmit" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-400 active:bg-blue-600 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"> Add </button>
+                <button wire:click="submit" wire:loading.remove wire:target='submit' type="submit" id="addTargetSubmit" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-400 active:bg-blue-600 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"> Add </button>
+                <span wire:loading wire:target='submit'> Loading... </span>
         </x-slot>
     </x-jet-dialog-modal>
 

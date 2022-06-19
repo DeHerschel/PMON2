@@ -18,10 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Target::factory(10)->create();
-        Problem::factory(3)->create();
-        Role::factory(3)->create();
-        User::factory(5)->create();
-        Permission::factory(10)->create();
+        User::factory(1)->create();
     }
 }

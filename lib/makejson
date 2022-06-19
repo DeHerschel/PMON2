@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function dataJSON() {
-	hostJson="/tmp/pmon/host${nhost}.json";
+	host=$1
+	hostJson="/tmp/pmon/${host}.json";
 	echo "{ 
 		\"TIME\":\"${PTIME}\",
 		\"TTL\":\"${PTTL}\",
@@ -11,7 +12,8 @@ function dataJSON() {
 	}" > $hostJson;
 }
 function downJSON() {
-	hostJson="/tmp/pmon/host${nhost}.json";
+	host=$1
+	hostJson="/tmp/pmon/${host}.json";
 	echo "{ 
 		\"TIME\":\"\",
 		\"TTL\":\"\",
@@ -21,7 +23,8 @@ function downJSON() {
 	}" > $hostJson;
 }
 function inestableJSON() {
-	hostJson="/tmp/pmon/host${nhost}.json";
+	host=$1
+	hostJson="/tmp/pmon/${host}.json";
 	echo "{ 
 		\"TIME\":\"${PTIME}\",
 		\"TTL\":\"${PTTL}\",

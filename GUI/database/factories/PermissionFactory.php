@@ -15,7 +15,7 @@ class PermissionFactory extends Factory
     public function definition()
     {
         return [
-            'target_id' => $this->faker->unique()->randomElement([1,2,3,4,5,6,7,8,9,10]),
+            'target_id' => 1,
             'role_id' => $this->faker->randomElement([1,2,3])
 
         ];

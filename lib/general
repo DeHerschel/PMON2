@@ -1,6 +1,6 @@
 #!/bin/bash
-source /var/lib/pmon/pinghost
-source /var/lib/pmon/messages
+source /var/lib/pmon2/pinghost
+source /var/lib/pmon2/messages
 
 
 #######################

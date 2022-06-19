@@ -14,4 +14,9 @@ class Problem extends Model
         'target'
     ];
     use HasFactory;
+
+    public function Target()
+    {
+        return $this->belongsTo('App\Models\Target');
+    }
 }

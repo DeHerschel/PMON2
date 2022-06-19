@@ -4,16 +4,18 @@
             Targets
         </h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto">
-    <div class="max-w-7xl py-10 sm:px-6 lg:px-8 mx-auto">
-        <div class="md:grid md:grid-cols-3 md:gap-6">
-        @foreach ($targets as $target)
-                <x-index-host-card :target="$target" />
-        @endforeach
+    <x-AddTarget/>
+    @livewire('show-post')
+    {{-- <div class="max-w-7xl mx-auto">
+        <div class="max-w-7xl py-10 sm:px-6 lg:px-8 mx-auto">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+            @foreach ($targets as $target)
+                    <x-index-host-card :target="$target" />
+            @endforeach
+            </div>
         </div>
-    </div>
     {{$targets->links()}}
-    </div>
+    </div> --}}
 </x-AppLayout>
 
 
