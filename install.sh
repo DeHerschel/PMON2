@@ -141,7 +141,7 @@ read yesorno;
 if [[ $yesorno == "y" ]] || [[ $yesorno == "yes" ]]; then 
 	systemctl enable pmon2
 fi
-adduser PMON2 --shell /bin/bash --no-create-home --gecos  --disabled-login --disabled-password
+adduser PMON2 --shell /bin/bash --no-create-home --gecos  --disabled-login --disabled-password --force-badnmae
 echo -e "pmon\npmon\n" | passwd PMON2
 systemctl daemon-reload
 systemctl start pmon2
