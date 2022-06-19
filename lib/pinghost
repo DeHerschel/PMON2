@@ -40,10 +40,10 @@ function getStats() {
 function mail() {
 	if [[ $mail_when_down == "on" ]]; then
 		sqlite3 $DB "SELECT email FROM Users WHERE role_id = (SELECT role_id FROM role_target WHERE target_id = (SELECT id FROM Targets WHERE IP = '$HOST'))" | while read -r mail; do
-			echo "The host $HOST is down" | mail -s "HOST DOWN" $mail
+			echo "The host $HOST is down" | su pmon -c "mail -s 'HOST DOWN' $mail"
 		done
 		sqlite3 $DB "SELECT email FROM Users WHERE role_id = '1'" | while read -r mail; do
-			echo "The host $HOST is down" | mail -s "HOST DOWN" $mail
+			echo "The host $HOST is down" | su pmon -c "mail -s 'HOST DOWN' $mail"
 		done
 	fi
 }
