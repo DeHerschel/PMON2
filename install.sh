@@ -9,8 +9,11 @@ sleep 1
 [[ `which php` ]] || {
 	echo -ne "Installing php...\r"
 	sleep 1;
-	apt install -y php libapache2-mod-pho
+	apt remove php
 }
+apt install ca-certificates apt-transport-https software-properties-common
+add-apt-repository ppa:ondrej/php
+apt install php php-curl php-xml
 [[ `which node` ]] || {
 	echo -ne "Installing nodejs...\r"
 	curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
@@ -20,7 +23,8 @@ sleep 1
 [[ `which composer` ]] || {
 	echo -ne "Installing composer...\r"
 	sleep 1;
-	apt install -y composer
+	curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+	php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 }
 [[ `which sqlite3` ]] || {
 	echo -ne "Installing sqlite3...\r"
@@ -98,8 +102,13 @@ echo -ne "/var/lib/pmon2/\n"
 cp service/pmond /var/lib/pmon2/pmond
 cp pmon.sh /var/lib/pmon2/pmon.sh
 cp -r GUI /var/lib/pmon2/GUI
-cp pmon2db.sqlite /etc/pmon2/pmon2db.sqlite
-php /var/lib/pmon2/GUI/artisan migrate:fresh
+cd /var/lib/pmon2/GUI
+composer update
+composer install
+npm install
+php artisan key:generate
+touch /etc/pmon2/pmon2db.sqlite
+php artisan migrate
 
 sqlite3 /etc/pmon2/pmon2db.sqlite "INSERT INTO 'roles' ('name') values ('superadmin')"
 sqlite3 /etc/pmon2/pmon2db.sqlite "INSERT INTO 'roles' ('name') values ('sysadmin')"
