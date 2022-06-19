@@ -6,13 +6,12 @@ unset PICMP;
 unset PTTL;
 ERRORMODE=0;
 LAST_PICMP=0
-problems=0;
 
 function getStats() {
+	problems=0;
 	local pingLine=$1;
 	local pingLine=($pingLine)
 	local lost=0;
-	PROBLEMS=0;
 	STATE='NORMAL';
 	LOST=0;
 	PTIME=${pingLine[-2]:5};
@@ -30,11 +29,10 @@ function getStats() {
 	fi
 	[[ $(($PICMP-1)) -eq $LAST_PICMP ]] || {
 		let problems=$problems+1;
-		sqlite3 $DB "INSERT INTO problems ('type', 'description', 'target_id') values ('DOWN', 'HOST IS DOWN', (SELECT id FROM targets WHERE IP = '$HOST'))"
+		PROBLEMS=0;
 		let lost=$lost+1;
 		LOST=$lost
 		PROBLEMS=$problems;
-
 	}
 }
 function mail() {
@@ -69,6 +67,8 @@ function pingHost() { #ARGS: HOST [nhost as a service]
 			hostdownMsg;
 			mail
 			ERRORMODE=1;
+			sqlite3 $DB "INSERT INTO problems ('type', 'description', 'target_id') values ('DOWN', 'HOST IS DOWN', (SELECT id FROM targets WHERE IP = '$HOST'))"
+
 		else #good answer
 				
 			[ $isfirstline -eq 1 ] && {
@@ -82,6 +82,7 @@ function pingHost() { #ARGS: HOST [nhost as a service]
 				let aae=aae+1; #count aae
 				[ "$aae" -eq 1 ] && { #first good pingLine after error
 					inestableJSON $HOST;
+					sqlite3 $DB "INSERT INTO problems ('type', 'description', 'target_id') values ('INESTABLE', 'HOST IS INESTABLE', (SELECT id FROM targets WHERE IP = '$HOST'))"
 					hostUpMsg;
 					continue;
 				}

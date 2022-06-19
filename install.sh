@@ -49,6 +49,8 @@ if [[ -d /var/lib/pmon2 ]]; then
 	if [[ $yesorno == "y" ]] || [[ $yesorno == "yes" ]]; then
 		systemctl stop pmon2
 		echo -ne "Removing files...\r"
+		rm -rf /var/lib/pmon2/GUI/storage/*
+		rm -rf /var/lib/pmon2/*
 		rm -rf /var/lib/pmon2
 		rm /usr/bin/pmon
 		rm /bin/pmond
@@ -141,7 +143,7 @@ read yesorno;
 if [[ $yesorno == "y" ]] || [[ $yesorno == "yes" ]]; then 
 	systemctl enable pmon2
 fi
-adduser PMON2 --shell /bin/bash --no-create-home --gecos  --disabled-login --disabled-password --force-badnmae
+adduser PMON2 --shell /bin/bash --no-create-home --gecos  --disabled-login --disabled-password --force-badname
 echo -e "pmon\npmon\n" | passwd PMON2
 systemctl daemon-reload
 systemctl start pmon2
