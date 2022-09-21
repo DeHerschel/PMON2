@@ -12,9 +12,9 @@ class DashBoard extends Component
 {
     public function render()
     {
-        $targets = Auth::user()->Role->Targets()->orderBy('id', 'desc')->paginate(5);
+        $targets = Auth::user()->Role->Targets()->orderBy('id', 'desc')->paginate(8);
         if (Auth::user()->Role->id == 1) {
-            $targets = Target::orderBy('id', 'desc')->paginate(5);
+            $targets = Target::orderBy('id', 'desc')->paginate(8);
         }
         $targetsNoPag = Auth::user()->Role->Targets()->orderBy('id', 'desc')->get();
         if (Auth::user()->Role->id == 1) {

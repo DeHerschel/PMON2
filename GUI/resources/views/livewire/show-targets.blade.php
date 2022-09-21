@@ -23,7 +23,10 @@
                     <x-index-host-card :target="$target" />
                 @endforeach
             </div>
-        {{$targets->links()}}
+        <div class="mt-2">
+            {{$targets->links()}}
+
+        </div>
         </div>
     </div>
 

@@ -7,9 +7,9 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto">
-    <div class="max-w-7xl py-10 sm:px-6 lg:px-8 mx-auto">
-        <div class="grid grid-cols-4 gap-x-2 h-36 mb-5">
-            <div class="col-span-1 flex shadow bg-blue-500 text-center text-gray-800 text-lg font-semibold md:rounded-tl-md md:rounded-tr-md">
+    <div class="max-w-7xl mt-4 sm:px-6 lg:px-8 mx-auto ">
+        <div class="grid grid-cols-4 gap-x-2 h-26 ">
+            <div class="col-span-1 flex shadow-inner-md bg-blue-200 text-center text-gray-800 text-lg font-semibold md:rounded-tl-md md:rounded-tr-md my-auto py-3">
               <div class="m-auto">
                   <div class="">
                     @php
@@ -35,7 +35,7 @@
                   </div>
               </div>
             </div>
-            <div class="col-span-1 flex shadow bg-orange-600 text-gray-800  text-center text-lg font-semibold md:rounded-tl-md md:rounded-tr-md">
+            <div class="col-span-1 flex shadow-inner bg-orange-200 text-gray-800  text-center text-lg font-semibold md:rounded-tl-md md:rounded-tr-md my-auto py-3">
               <div class="m-auto">
                   <div class="">
                     @php
@@ -58,7 +58,7 @@
               </div>
             </div>
 
-            <div class="col-span-1 flex shadow bg-yellow-500 text-gray-800  text-center text-lg font-semibold md:rounded-tl-md md:rounded-tr-md">
+            <div class="col-span-1 flex shadow-inner bg-yellow-100 text-gray-800  text-center text-lg font-semibold md:rounded-tl-md md:rounded-tr-md my-auto py-3">
                 <div class="m-auto">
                   <div class="">
                      @php
@@ -80,7 +80,7 @@
                   </div>
               </div>
             </div>
-            <div class="col-span-1 flex shadow bg-red-600 text-gray-800  text-center text-lg font-semibold md:rounded-tl-md md:rounded-tr-md">
+            <div class="col-span-1 flex shadow-innere bg-red-400 text-gray-800  text-center text-lg font-semibold md:rounded-tl-md md:rounded-tr-md my-auto py-3">
                  <div class="m-auto">
                   <div class="">
                      @php
@@ -109,36 +109,36 @@
         </div>
         <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                <table class="w-full leading-normal">
-                    <thead>
-                        <tr>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Name
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                IP
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Created at
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Updated at
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Status
-                            </th>
-                        </tr>
-                    </thead>
+                <table class="w-full leading-normal ">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-y-2 border-gray-200 bg-gray-100 text-left text-md font-semibold text-gray-600 uppercase tracking-wider">
+                                    Name
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-y-2 border-gray-200 bg-gray-100 text-left text-md font-semibold text-gray-600 uppercase tracking-wider">
+                                    IP
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-y-2 border-gray-200 bg-gray-100 text-left text-md font-semibold text-gray-600 uppercase tracking-wider">
+                                    Created at
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-y-2 border-gray-200 bg-gray-100 text-left text-md font-semibold text-gray-600 uppercase tracking-wider">
+                                    Updated at
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-y-2 border-gray-200 bg-gray-100 text-left text-md font-semibold text-gray-600 uppercase tracking-wider">
+                                    Status
+                                </th>
+                            </tr>
+                        </thead>
                     <tbody>
                         @if ($targets)
                             @foreach ($targets as $target)
                                  <tr>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-lg">
                                         <div class="flex items-center">
                                             <div class="ml-3">
                                                 <a href="{{route('targets.show', $target)}}">
@@ -149,20 +149,20 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-lg">
                                         <p class="text-gray-900 whitespace-no-wrap">{{$target->IP}}</p>
                                     </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-lg">
                                         <p class="text-gray-900 whitespace-no-wrap">
                                             {{$target->created_at}}
                                         </p>
                                     </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-lg">
                                         <p class="text-gray-900 whitespace-no-wrap">
                                             {{$target->updated_at}}
                                         </p>
                                     </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-lg">
                                         <span class="relative inline-block px-3 py-1 font-semibold @php
                                         if (file_exists('/tmp/pmon/'.$target->IP.'.json')) {
                                                 $json = file_get_contents('/tmp/pmon/'.$target->IP.'.json');
@@ -227,8 +227,10 @@
 
                     </tbody>
                 </table>
+                <div class="px-4">
 
-                {{$targets->links()}}
+                    {{$targets->links()}}
+                </div>
             </div>
         </div>
     </div>

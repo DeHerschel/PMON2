@@ -22,14 +22,7 @@ class ShowPingState extends Component
         else {
             $this->state = 'DOWN';
         }
-        //     $target = Target::where('ip', $this->target->IP)->first();
-        //     $data = json_decode($target->pingData);
-        //     $this->time = $data->time;
-
-        // }
-
     }
-
     public function update() {
         if (file_exists("/tmp/pmon/" . $this->target->IP . ".json")) {
             $json = file_get_contents("/tmp/pmon/" . $this->target->IP . ".json");
@@ -39,11 +32,8 @@ class ShowPingState extends Component
                 $this->state = $json->STATE;
             }
         }
-
     }
-
-    public function render()
-    {
+    public function render() {
         $state = $this->state;
         $time = $this->time;
         return view('livewire.show-ping-state',compact('time', 'state') );
