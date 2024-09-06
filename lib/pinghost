@@ -70,13 +70,16 @@ function pingHost() { #ARGS: HOST [nhost as a service]
 			sqlite3 $DB "INSERT INTO problems ('type', 'description', 'target_id') values ('DOWN', 'HOST IS DOWN', (SELECT id FROM targets WHERE IP = '$HOST'))"
 
 		else #good answer
-				
+
+
 			[ $isfirstline -eq 1 ] && {
 				isfirstline=0;
 				continue;
 			}
 		
 			getStats "$line"
+			sqlite3 $DB "INSERT INTO pings ('ptime', 'target_id') values ('$PTIME', (SELECT id FROM targets WHERE IP = '$HOST'))"
+		
 			#error mode = 1
 			if [ $ERRORMODE -eq 1 ]; then
 				let aae=aae+1; #count aae

@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Target: {{$target->name}}
+            HOST: {{$target->name}}
         </h2>
 
     </x-slot>
@@ -12,10 +12,11 @@
                 <div class="col-span-3 grid grid-cols-3 gap-2 md:gap-3 mb-2 md:mb-0">
                     <div class="col-span-1 grid grid-cols-2 px-4 bg-white shadow md:rounded-tl-md md:rounded-tr-md">
                         <div class="col-span-2 text-center my-auto font-medium text-black">
-                            Problems:
+                            PROBLEMS:
                         </div>
                         <div class="col-span-2 text-center text-gray-600">
-                            {{$pingInfo['PROBLEMS']}}
+                           {{$nproblems}}
+
                         </div>
                     </div>
                     <div class="col-span-1 grid grid-cols-2 px-4 bg-white shadow md:rounded-tl-md md:rounded-tr-md">
@@ -120,11 +121,11 @@
                         @endphp
                     </div>
                     <div class="col-span-1 text-gray-600">
-                        <a wire:click="$set('problemsModal', 'true')">Problems history</a>
+                        <button wire:click="$set('problemsModal', 'true')" class="text-blue-500">Problems history</button>
                     </div>
                 </div>
                 <x-jet-dialog-modal wire:model="problemsModal">
-                    <x-slot name="title">
+                    <x-slot name="title" class="text-center text-grey-600">
                        Problems History
                     </x-slot>
                     <x-slot name="content">

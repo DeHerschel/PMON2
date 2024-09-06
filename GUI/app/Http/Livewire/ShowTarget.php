@@ -22,7 +22,7 @@ class ShowTarget extends Component {
         $this->target = $target;
         $json = file_get_contents("/tmp/pmon/" . $target->IP . ".json");
         $this->pingInfo = json_decode($json, true);
-        shell_exec("nmap -sS " . $this->target->IP . " | grep -A 20 PORT | sed '$ d' > /tmp/pmon/nmap &");
+        shell_exec("nmap -sS " . $this->target->IP . " | grep -A 20 PORT | sed '1d; /./!d' | sed '$ d'   > /tmp/pmon/nmap &");
         shell_exec("traceroute -I " . $this->target->IP." | sed '1d' > /tmp/pmon/traceroute &");
     }
     public function map() {
@@ -33,19 +33,22 @@ class ShowTarget extends Component {
     }
     public function update()
     {
-        $target = $this->target;
-        $pingInfo = $this->pingInfo;
-        $traceroute = $this->traceroute;
-        $nmap = $this->nmap;
-        return view('livewire.show-target', compact('target', 'pingInfo', 'nmap', 'traceroute'));
-    }
-    public function render()
-    {
+        $nproblems = $this->target->problems()->count();
         $problems = $this->target->problems()->get();
         $target = $this->target;
         $pingInfo = $this->pingInfo;
         $traceroute = $this->traceroute;
         $nmap = $this->nmap;
-        return view('livewire.show-target', compact('target', 'pingInfo', 'nmap','traceroute', 'problems'));
+        return view('livewire.show-target', compact('target', 'pingInfo', 'nmap', 'traceroute','problems','nproblems'));
+    }
+    public function render()
+    {
+        $nproblems = $this->target->problems()->count();
+        $problems = $this->target->problems()->get();
+        $target = $this->target;
+        $pingInfo = $this->pingInfo;
+        $traceroute = $this->traceroute;
+        $nmap = $this->nmap;
+        return view('livewire.show-target', compact('target', 'pingInfo', 'nmap','traceroute', 'problems', 'nproblems'));
     }
 }

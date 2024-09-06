@@ -1,13 +1,13 @@
 #!/bin/bash
-service pmon stop
+service pmon2 stop
 killall ping
-echo -ne "/etc/pmon/pmon.conf\r"
+echo -ne "/etc/pmon2/pmon.conf\r"
 cp service/pmon.conf /etc/pmon2/pmon.conf
 sleep 0.5
-echo -ne "/etc/pmon/hosts.list\r"
+echo -ne "/etc/pmon2/hosts.list\r"
 cp service/hosts.list /etc/pmon2/hosts.list
 sleep 0.5
-echo -ne "/etc/init.d/pmon            \r"
+echo -ne "/etc/init.d/pmon2            \r"
 cp service/pmon-service /etc/init.d/pmon
 
 sleep 0.5
