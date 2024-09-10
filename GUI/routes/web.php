@@ -2,6 +2,7 @@
 
 use App\Mail\IssueMailable;
 use App\Http\Livewire\Tools;
+use App\Http\Livewire\Settings;
 use App\Http\Livewire\DashBoard;
 use App\Http\Livewire\ShowTarget;
 use App\Http\Livewire\ShowTargets;
@@ -31,7 +32,8 @@ Route::get('/targets/{target}', ShowTarget::class)->name('targets.show')->middle
 // Route::put('/hosts/{target}', [TargetController::class, 'update'])->name('targets.update');
 // Route::delete('/hosts/{target}', [TargetController::class, 'destroy'])->name('targets.destroy');
 //Route::resource('targets', TargetController::class)->parameters(['hosts'=>'target'])->names('targets')->middleware('auth');
-Route::get('/tools', Tools::class)->name('settings.index')->middleware('auth');
+Route::get('/tools', Tools::class)->name('tools.index')->middleware('auth');
+Route::get('/settings', Settings::class)->name('settings.index')->middleware('auth');
 Route::get('/register', [RegisteredUserController::class, 'create'])
 ->name('register')->middleware('auth');
 Route::post('/register', [RegisteredUserController::class, 'store'])

@@ -1,3 +1,7 @@
 .vscode
 pmon2db.sqlite
 *.sqlite
+vendor
+public
+node_modules
+

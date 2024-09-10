@@ -18,7 +18,12 @@
                         DOMAIN:
                     </div>
                     <div class="col-span-2 text-gray-600">
-                        {{$target->domain ?? "--"}}
+                        @empty($target->domain)
+
+                        <strong>---</strong>
+
+                        @endempty
+                        {{$target->domain}}
                     </div>
                 </div>
             </div>

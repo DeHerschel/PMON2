@@ -6,7 +6,7 @@
     </x-slot>
    <div class="max-w-7xl mx-auto">
         <div class="max-w-7xl py-10 sm:px-6 lg:px-8 mx-auto">
-                    <div class="md:grid md:grid-cols-3 md:gap-6">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
                     <h4 class="text-lg font-medium text-gray-900"> Nslookup: </h4>
                     <p class="mt-1 text-sm text-gray-600"></p>
