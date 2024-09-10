@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Profile;
 use App\Models\User;
 use Livewire\Component;
 
-class RegisterUser extends Component
+class Register extends Component
 {
     public $username;
     public $firstname;
@@ -14,6 +14,7 @@ class RegisterUser extends Component
     public $email;
     public $password;
     public $conf_password;
+    public $registerModal = false;
 
     public function submit() {
         $user = new User();
@@ -27,6 +28,6 @@ class RegisterUser extends Component
 
     public function render()
     {
-        return view('livewire.profile.register-user');
+        return view('livewire.profile.register');
     }
 }

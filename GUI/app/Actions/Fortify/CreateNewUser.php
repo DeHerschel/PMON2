@@ -16,14 +16,17 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array  $input
      * @return \App\Models\User
+     * 
      */
+
+
     public function create(array $input)
     {
         Validator::make($input, [
             'username' => ['required', 'string', 'max:255'],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'integer'],
+            'role' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
@@ -33,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'username' => $input['username'],
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
-            'role_id' => $input['role'],
+            'role_id' => intval($input['role']),
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);

@@ -1,8 +1,4 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-          
-        </x-slot>
+
 
         <x-jet-validation-errors class="mb-4" />
 
@@ -23,12 +19,12 @@
                 <x-jet-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
             </div>
 
-            <div class="addTargetDomDiv col-span-6" >
+            <div class="addTargetDomDiv col-span-6 mt-4" >
                     <label for="role" class="block font-medium text-sm text-gray-700">Rol: </label>
                     <select  wire:model="role" id="role" name="role" class="border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full ">
-                        <option value="1">Superadmin</option>
-                        <option value="2">Sysadmin</option>
-                        <option value="3">Programmer</option>
+                        <option value="1">superadmin</option>
+                        <option value="{{ __('1') }}">sysadmin</option>
+                        <option value="{{ __('2') }}">programmer</option>
                     </select>
                 </div>
             <div class="mt-4">
@@ -64,14 +60,9 @@
             @endif
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
+      \
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>

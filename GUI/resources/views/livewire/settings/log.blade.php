@@ -1,20 +1,28 @@
 
 
-<x-jet-form-section submit="updatePassword">
+<x-jet-form-section submit="updateLogs">
     <x-slot name="title">
-        {{ __('Change database file') }}
+        {{ __('Change logs files') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('The default database file is /et/pmon2/pmon2db.sqlite') }}
+        {{ __('Default logfile is /var/log/pmon.log
+                Default error logfile is /var/log/pmon.err.log
+                ') }}
     </x-slot>
 
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="database" value="{{ __('database') }}" />
-            <x-jet-input id="database" type="text" class="mt-1 block w-full" wire:model.defer="database" />
-            <x-jet-input-error for="username" class="mt-2" />
+            <x-jet-label for="logfile" value="{{ __('Logfile') }}" />
+            <x-jet-input id="logfile" type="text" class="mt-1 block w-full" wire:model.defer="database" />
+            <x-jet-input-error for="logfile" class="mt-2" />
         </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="errlogfile" value="{{ __('Error logfile') }}" />
+            <x-jet-input id="errlogfile" type="text" class="mt-1 block w-full" wire:model.defer="database" />
+            <x-jet-input-error for="errlogfile" class="mt-2" />
+        </div>
+
 
     </x-slot>
 
