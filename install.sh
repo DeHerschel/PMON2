@@ -53,15 +53,6 @@ cp service/pmon-service /etc/init.d/pmon2
 cp lib/* /var/lib/pmon2/ &
 sleep 0.5
 echo -ne "/var/lib/pmon2/.....\r"
-sleep 0.5
-echo -ne "/var/lib/pmon2/.....\r"
-sleep 0.5
-echo -ne "/var/lib/pmon2/.....\r"
-sleep 0.5
-echo -ne "/var/lib/pmon2/.....\r"
-sleep 0.5
-echo -ne "/var/lib/pmon2/.....\r"
-sleep 0.5
 echo -ne "/var/lib/pmon2/\n"
 cp service/pmond /var/lib/pmon2/pmond
 cp pmon.sh /var/lib/pmon2/pmon.sh
@@ -92,7 +83,8 @@ sqlite3 /etc/pmon2/pmon2db.sqlite "INSERT INTO 'role_target' ('target_id', 'role
 sleep 1
 echo -ne "ok                              \n"
 echo -ne "Making symlinks....\n"-y 
-
+rm /bin/pmon-changedb
+ln /var/lib/pmon2/pmon-changedb /bin/pmon-changedb
 ln /var/lib/pmon2/pmond /bin/pmond
 ln /var/lib/pmon2/pmon.sh /usr/bin/pmon
 echo -ne "ok                                \n"

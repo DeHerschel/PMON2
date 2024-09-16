@@ -1,0 +1,49 @@
+#!/bin/bash
+
+
+#######################
+#     CHGANGE DB      #
+#######################
+
+
+source /etc/pmon2/pmon2.conf
+dbfile="$1";
+new_db="$2";
+
+function escapechar() {
+    path=$1;
+    path_arr=();
+    IFS='/'
+    for i in $path; do
+        path_arr+=($i);
+
+    done;
+    IFS=' '
+ 
+    path="";
+    for i in ${path_arr[@]}; do
+
+        path="$path\/$i"
+    done;
+    dbfile=$path
+}
+
+cp $DB $dbfile;
+rm $DB
+
+if [ $new_db -eq 1 ]; then
+
+    sqlite3 $dbfile "delete from pings"
+    sqlite3 $dbfile "delete from targets"
+    sqlite3 $dbfile "delete from sessions"
+    
+fi
+
+escapechar "$dbfile"
+
+sed_param="s/DB.*/DB=$dbfile/"
+sed -i "$sed_param" /etc/pmon2/pmon2.conf
+sed_param=s/DB_DATABASE.*/DB_DATABASE=${dbfile}/
+sed -i "$sed_param" /var/lib/pmon2/GUI/.env
+service pmon2 stop && service pmon start
+exit 0;
