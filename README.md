@@ -1,7 +1,9 @@
 PMON2
- ![PMON 2 login](assets/login.png)
+
 
 PMON2 is a tool with a Web User Interface to monitor connections through pings. With PMON2 you can monitor your connections and be notified via email when any host is down. PMON2 also shows usefull information about conection state in real time. 
+
+
  ![Dashboards with hosts](assets/dashboard.png)
  ![Hosts tab](assets/hoststab.png)
 
