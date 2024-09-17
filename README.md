@@ -1,8 +1,12 @@
 PMON2
 
+PMON2 is a tool with a Web User Interface to monitor connections through pings. With PMON2 you can monitor your connections and be notified via email when any host is down. PMON2 also shows usefull information about conection state in real time. 
+
+PMON2 has a Users and Roles system. You will be able to see information about the hosts assigned to each role. At this way PMON2 can work in a workgroup through the internet or a local network and each user will be capable to add, edit, see, etc,hosts assigned to its role.
 
 
 
+ ![alt tag](assets/dashboard.png)
 
 
 
@@ -41,3 +45,9 @@ Installing and setting up:
     Go to localhost:7000 in your browser and log in with the user 'admin' and the password 'password'.
 
     Admin user has the superadmin role. As a superadmin, from the user's configuration page you can create new users and assign roles. Register your new user as a superadmin and remove the default 'admin' account. 
+
+
+
+
+
+
