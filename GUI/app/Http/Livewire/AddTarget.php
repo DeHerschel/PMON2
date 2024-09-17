@@ -20,7 +20,7 @@ class AddTarget extends Component
     public $rol;
 
     protected $rules = [
-        'name' => 'required|max:100|unique:targets,name|regex:/^[\pL\s\-]+$/u',
+        'name' => 'required|max:100|unique:targets,name|regex:/^[a-z0-9 .\-]+$/i',
         'ip' => 'required|ip|unique:targets,IP',
         'domain' => 'nullable|max:255',
         'mac' => 'nullable|mac_address|unique:targets,MAC'

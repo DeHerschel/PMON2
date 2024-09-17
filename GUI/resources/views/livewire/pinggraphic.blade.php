@@ -3,13 +3,13 @@
         <!-- Botones para seleccionar el periodo -->
         <button onclick="updateChart('15m');updatePeriod('15m');" class="text-blue-500">15 min</button>
         <button onclick="updateChart('30m');updatePeriod('30m');" class="text-blue-500 ml-5">30 min</button>
-        <button onclick="updateChart('1h'); updatePeriod('1h')" class="text-blue-500 ml-5">1 hora</button>
-        <button onclick="updateChart('6h'); updatePeriod('6h')" class="text-blue-500 ml-5">6 horas</button>
-        <button onclick="updateChart('12h'); updatePeriod('12h')" class="text-blue-500 ml-5">12 horas</button>
-        <button onclick="updateChart('24h'); updatePeriod('24h')" class="text-blue-500 ml-5">24 horas</button>
-        <button onclick="updateChart('7d'); updatePeriod('7d')" class="text-blue-500 ml-5">7 días</button>
-        <button onclick="updateChart('15d'); updatePeriod('15d')" class="text-blue-500 ml-5">15 días</button>
-        <button onclick="updateChart('1m'); updatePeriod('1m')" class="text-blue-500">1 mes</button>
+        <button onclick="updateChart('1h'); updatePeriod('1h')" class="text-blue-500 ml-5">1 hour</button>
+        <button onclick="updateChart('6h'); updatePeriod('6h')" class="text-blue-500 ml-5">6 hours</button>
+        <button onclick="updateChart('12h'); updatePeriod('12h')" class="text-blue-500 ml-5">12 hours</button>
+        <button onclick="updateChart('24h'); updatePeriod('24h')" class="text-blue-500 ml-5">24 hours</button>
+        <button onclick="updateChart('7d'); updatePeriod('7d')" class="text-blue-500 ml-5">7 days</button>
+        <button onclick="updateChart('15d'); updatePeriod('15d')" class="text-blue-500 ml-5">15 days</button>
+        <button onclick="updateChart('1m'); updatePeriod('1m')" class="text-blue-500">1 month</button>
     </div>
 
     <div class="rounded-lg overflow-hidden">
